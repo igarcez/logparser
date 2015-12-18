@@ -21,3 +21,12 @@ Instalando dependencias do aplicativo
 cd ..
 composer install
 ```
+
+Definindo configurações
+---------
+
+Na pasta config está os arquivos de configuração do aplicativo
+
+**server.json**
+Podem ser informados quantos servidores quanto necessário
+`key_file` pode ter um caminho absoluto ou relativo a base do aplicativo
