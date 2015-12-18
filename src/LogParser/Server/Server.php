@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 15:50:01
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-18 17:47:35
+ * @Last Modified time: 2015-12-18 20:40:10
  */
 
 namespace LogParser\Server;
@@ -16,19 +16,14 @@ class Server {
   protected $output;
   protected $error;
 
-  public function __construct($host, $username, $keyfile) {
+  public function __construct($host, $username, $keyfile, $ssh_options) {
     $this->host = $host;
     $this->username = $username;
+    $this->ssh_options = $ssh_options;
     if($keyfile[0] != '/')
       $this->keyfile = __DIR__ . "/../../../" . $keyfile;
     else
       $this->keyfile = $keyfile;
-    $this->ssh_options = array(
-      'UserKnownHostsFile' => '/dev/null',
-      'StrictHostKeyChecking' => 'no',
-      'PasswordAuthentication' => 'no',
-      'IdentitiesOnly' => 'yes'
-    );
   }
 
   private function connectionString() {

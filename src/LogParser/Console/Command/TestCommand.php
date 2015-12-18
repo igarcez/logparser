@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 15:15:53
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-18 17:26:59
+ * @Last Modified time: 2015-12-18 20:40:30
  */
 namespace LogParser\Console\Command;
 use Symfony\Component\Console\Command\Command;
@@ -21,7 +21,7 @@ class TestCommand extends AbstractCommand {
 
   protected function execute(InputInterface $input, OutputInterface $output) {
     foreach ($this->servers as $server) {
-      $server = new Server($server->host, $server->user, $server->key_file);
+      $server = new Server($server->host, $server->user, $server->key_file, $server->ssh_options);
       $output->writeln($server->execCommand('ls'));
     }
   }
