@@ -1,5 +1,0 @@
-#!/usr/bin/env php
-<?php
-$app = require __DIR__ . '/../app/logparser-tools.php';
-$app->run();
-
