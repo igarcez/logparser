@@ -3,7 +3,8 @@
     "description": "Exercício para Chaordic",
     "require": {
         "php": ">=5.3.3",
-        "symfony/console": "2.4.x-dev"
+        "symfony/console": "2.4.x-dev",
+        "phpseclib/phpseclib": ">=1.0"
     },
     "autoload": {
         "psr-4": {
