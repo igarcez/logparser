@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 15:14:33
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-18 18:43:19
+ * @Last Modified time: 2015-12-19 12:47:51
  */
 namespace LogParser\Console;
 use Symfony\Component\Console\Application;
@@ -15,7 +15,8 @@ class LogParserApplication extends Application {
 
     $this->addCommands(array(
         new Command\TestCommand(),
-        new Command\CreateDummyLogsCommand()
+        new Command\CreateDummyLogsCommand(),
+        new Command\RemoveLogsCommand()
       ));
   }
 }
