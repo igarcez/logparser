@@ -4,49 +4,25 @@
       "host": "192.168.0.42",
       "user": "vagrant",
       "key_file": "/Users/ian/Development/Chaordic/LogParser/Servers/.vagrant/machines/static1/virtualbox/private_key",
-      "log_path": "/home/vagrant/logs",
-      "ssh_options" : {
-        "UserKnownHostsFile" : "/dev/null",
-        "StrictHostKeyChecking" : "no",
-        "PasswordAuthentication" : "no",
-        "IdentitiesOnly" : "yes"
-      }
+      "log_path": "/home/vagrant/logs"
     },
     "static2" : {
       "host": "192.168.0.43",
       "user": "vagrant",
       "key_file": "Servers/.vagrant/machines/static2/virtualbox/private_key",
-      "log_path": "/home/vagrant/logs",
-      "ssh_options" : {
-        "UserKnownHostsFile" : "/dev/null",
-        "StrictHostKeyChecking" : "no",
-        "PasswordAuthentication" : "no",
-        "IdentitiesOnly" : "yes"
-      }
+      "log_path": "/home/vagrant/logs"
     },
     "static3" : {
       "host": "192.168.0.44",
       "user": "vagrant",
       "key_file": "Servers/.vagrant/machines/static3/virtualbox/private_key",
-      "log_path": "/home/vagrant/logs",
-      "ssh_options" : {
-        "UserKnownHostsFile" : "/dev/null",
-        "StrictHostKeyChecking" : "no",
-        "PasswordAuthentication" : "no",
-        "IdentitiesOnly" : "yes"
-      }
+      "log_path": "/home/vagrant/logs"
     },
     "static4" : {
       "host": "192.168.0.45",
       "user": "vagrant",
       "key_file": "Servers/.vagrant/machines/static4/virtualbox/private_key",
-      "log_path": "/home/vagrant/logs",
-      "ssh_options" : {
-        "UserKnownHostsFile" : "/dev/null",
-        "StrictHostKeyChecking" : "no",
-        "PasswordAuthentication" : "no",
-        "IdentitiesOnly" : "yes"
-      }
+      "log_path": "/home/vagrant/logs"
     }
   }
 }

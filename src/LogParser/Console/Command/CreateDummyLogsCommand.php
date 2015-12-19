@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 16:37:31
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-19 12:25:06
+ * @Last Modified time: 2015-12-19 12:35:06
  */
 
 namespace LogParser\Console\Command;
@@ -41,7 +41,7 @@ class CreateDummyLogsCommand extends AbstractCommand {
     $time = 0;
 
     foreach ($this->servers as $server) {
-      $server_instance = new Server($server->host, $server->user, $server->key_file, $server->log_path ,$server->ssh_options);
+      $server_instance = new Server($server->host, $server->user, $server->key_file, $server->log_path);
       for ($i=0; $i < $limit; $i++) {
         $time += rand(0,1000);
         $server_instance->execCommand("mkdir -p $server->log_path");
