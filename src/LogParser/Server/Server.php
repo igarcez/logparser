@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 15:50:01
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-19 12:34:46
+ * @Last Modified time: 2015-12-20 15:10:20
  */
 
 namespace LogParser\Server;
@@ -44,6 +44,10 @@ class Server {
 
   public function getLogPath() {
     return $this->log_path;
+  }
+
+  public function getHost() {
+    return $this->host;
   }
 
   private function output($str) {
