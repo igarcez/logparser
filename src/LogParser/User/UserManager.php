@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-19 13:10:27
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-19 14:19:56
+ * @Last Modified time: 2015-12-19 17:25:53
  */
 
 namespace LogParser\User;
@@ -18,6 +18,19 @@ class UserManager {
   public function __construct() {
     $this->db = new JsonTable(__DIR__ . self::USER_FILE_LOCATION, true);
     $this->users = array();
+    if ($this->db->selectAll()) {
+      foreach($this->db->selectAll() as $user) {
+        $this->users[$user['id']] = $user['cluster'];
+      }
+    }
+  }
+
+  public function getUsers() {
+    return $this->users;
+  }
+
+  public function getCluster($user_id) {
+    return $this->users[$user_id];
   }
 
   public function addUser($id, $cluster) {
@@ -42,7 +55,6 @@ class UserManager {
 
   public function writeUsers() {
     $this->db->deleteAll();
-    var_dump($this->users);
     foreach ($this->users as $id => $cluster) {
       $this->db->insert(array('id'=> $id, 'cluster' => $cluster));
     }
