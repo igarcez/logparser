@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-19 14:25:46
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-20 15:31:09
+ * @Last Modified time: 2015-12-20 18:20:53
  */
 
 namespace LogParser\Console\Command;
@@ -92,10 +92,12 @@ class ParseCommand extends AbstractCommand {
 
   private function writeTofile($server, $lines, $first_line, $user_file) {
     foreach($lines as $line){
-      if(!$first_line)
+      if(!$first_line){
         $this->writeFirstLineToServer($server, $line, $user_file);
-      else
+        $first_line = $line;
+      } else {
         $this->writeLineToServer($server, $line, $user_file, $first_line);
+      }
       $server_host = $server->getHost();
       $this->output->writeln("added line $line to $server_host");
     }
@@ -108,13 +110,15 @@ class ParseCommand extends AbstractCommand {
   private function writeLineToServer($server, $line, $user_file, $first_line) {
     if (!empty($server->execCommand("cat $user_file | fgrep '$line'"))) return;
     $line_date = $this->extractLineDate($line);
-    $line_date = str_replace('/', '\/', $line_date);
-    $total_of_lines = $server->execCommand("cat -n $user_file | tail -n1 | awk '{print $1;}'");
+    $total_of_lines = $server->execCommand("cat $user_file | wc -l");
     $last_entry_line_number = $server->execCommand("cat -n $user_file | awk '$5<\"[$line_date\"' | tail -n1 | awk '{print $1;}'");
-    if($total_of_lines == $last_entry_line_number)
+    if (!$last_entry_line_number)
+      $last_entry_line_number = 1;
+    if($total_of_lines == $last_entry_line_number){
       $this->writeFirstLineToServer($server, $line, $user_file);
-    else
-      $server->execCommand("sed -i '$last_entry_line_numberi $line' $user_file");
+    } else{
+      $server->execCommand("sed -i '" . $last_entry_line_number. "i $line' $user_file");
+    }
   }
 
 }
