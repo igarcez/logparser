@@ -19,6 +19,7 @@ use LogParser\User;
 class ParseCommand extends AbstractCommand {
   private $user_manager;
   private $server_instances;
+  private $output;
   protected function configure() {
     $this->user_manager = new User\UserManager();
     $this->server_instances = array();
@@ -29,6 +30,7 @@ class ParseCommand extends AbstractCommand {
   protected function execute(InputInterface $input, OutputInterface $output) {
     //TODO change to threads here
     $this->initializeServerInstances();
+    $this->output = $output;
     foreach ($this->server_instances as $server) {
       foreach($this->getLinesByUsers($this->parseUserIdLines($server)) as $user_id => $array_of_lines) {
         $this->writeLinesToServer($user_id, $array_of_lines);
@@ -97,6 +99,8 @@ class ParseCommand extends AbstractCommand {
         $this->writeFirstLineToServer($server, $line, $user_file);
       else
         $this->writeLineToServer($server, $line, $user_file, $first_line);
+
+      $this->output->writeln("added line $line");
     }
   }
 

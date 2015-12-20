@@ -46,7 +46,10 @@ class CreateDummyLogsCommand extends AbstractCommand {
         $time += rand(0,1000);
         $server_instance->execCommand("mkdir -p $server->log_path");
         $server_instance->execCommand("touch $server->log_path/access.log");
-        $server_instance->execCommand("echo '" . $this->generateLogLine($time, $users_ids, $files) . "' >> $server->log_path/access.log");
+        $log_line = $this->generateLogLine($time, $users_ids, $files);
+        $log_path = $server->log_path;
+        $server_instance->execCommand("echo '$log_line' >> $log_path/access.log");
+        $output->writeln("creating line: $log_line on server: $log_path/access.log");
       }
       $output->writeln("log for " . $server->host . " created!");
     }
