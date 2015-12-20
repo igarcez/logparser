@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 16:37:31
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-19 12:35:06
+ * @Last Modified time: 2015-12-19 21:21:04
  */
 
 namespace LogParser\Console\Command;
@@ -38,7 +38,7 @@ class CreateDummyLogsCommand extends AbstractCommand {
     $users_ids = $this->generateUsersIds($users);
     $files = array("/meme.jpg", "/lolcats.jpg", "/other.jpg");
 
-    $time = 0;
+    $time = 100000;
 
     foreach ($this->servers as $server) {
       $server_instance = new Server($server->host, $server->user, $server->key_file, $server->log_path);
