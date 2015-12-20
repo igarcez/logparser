@@ -14,14 +14,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use LogParser\Server\Server;
-use LogParser\User;
 
 class ParseCommand extends AbstractCommand {
-  private $user_manager;
   private $server_instances;
   private $output;
   protected function configure() {
-    $this->user_manager = new User\UserManager();
     $this->server_instances = array();
     $this->setName("parse")
          ->setDescription("parse clusters after logs");

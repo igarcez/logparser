@@ -3,19 +3,20 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-19 13:10:27
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-19 17:25:53
+ * @Last Modified time: 2015-12-20 14:57:55
  */
 
 namespace LogParser\User;
 use LogParser\JsonDB\JsonTable;
 
-class UserManager {
+class UserManagerSingleton {
   private $users;
   private $db;
+  private static $instance;
 
   const USER_FILE_LOCATION = "/../../../data/users.json";
 
-  public function __construct() {
+  private function __construct() {
     $this->db = new JsonTable(__DIR__ . self::USER_FILE_LOCATION, true);
     $this->users = array();
     if ($this->db->selectAll()) {
@@ -23,6 +24,13 @@ class UserManager {
         $this->users[$user['id']] = $user['cluster'];
       }
     }
+  }
+
+  static function getInstance() {
+    if(null == self::$instance){
+      self::$instance = new UserManagerSingleton();
+    }
+    return self::$instance;
   }
 
   public function getUsers() {
