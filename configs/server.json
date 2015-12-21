@@ -3,7 +3,7 @@
     "static1" : {
       "host": "192.168.0.42",
       "user": "vagrant",
-      "key_file": "/Users/ian/Development/Chaordic/LogParser/Servers/.vagrant/machines/static1/virtualbox/private_key",
+      "key_file": "Servers/.vagrant/machines/static1/virtualbox/private_key",
       "log_path": "/home/vagrant/logs"
     },
     "static2" : {
