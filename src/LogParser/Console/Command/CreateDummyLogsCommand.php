@@ -3,7 +3,7 @@
  * @Author: Ian Garcez <ian@onespace.com.br>
  * @Date:   2015-12-18 16:37:31
  * @Last Modified by:   Ian Garcez
- * @Last Modified time: 2015-12-20 16:41:32
+ * @Last Modified time: 2015-12-20 21:59:46
  */
 
 namespace LogParser\Console\Command;
@@ -24,7 +24,7 @@ class CreateDummyLogsCommand extends AbstractCommand {
     $this->setName("create-logs")
          ->setDescription("Create and populate logs on clusters")
          ->setDefinition(array(
-            new InputOption('users', 'u', InputOption::VALUE_OPTIONAL, 'number of user ids to create', $start),
+            new InputOption('users', 'u', InputOption::VALUE_OPTIONAL, 'number of user ids to create', $this->users),
             new InputOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'limit number of log  entries on each cluster', $this->limit),
             new InputOption('old-users', null, InputOption::VALUE_NONE, 'use existing users')
           ));
